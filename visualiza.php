@@ -7,9 +7,8 @@ $linha = $sql_query->fetch_assoc();
 <?php
 session_start();
 include("conexao.php");
-    if(!empty($_POST['feito'])){
-
-    }
+if (!empty($_POST['feito'])) {
+}
 
 ?>
 
@@ -31,6 +30,14 @@ include("conexao.php");
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
+
+
+
+    <script>
+        function tornarVermelho() {
+
+        }
+    </script>
 
 </head>
 
@@ -61,7 +68,8 @@ include("conexao.php");
                             <th>Veiculo</th>
                             <th>Local</th>
                             <th>Observação</th>
-                            <th>Deletar Agendamento</th>
+                            <th>Feito</th>
+                            <th>Verificar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,9 +83,9 @@ include("conexao.php");
                                 <td class="text-primary" scope="col"><?php echo $linha["veiculo"] ?></td>
                                 <td class="text-primary" scope="col"><?php echo $linha["localizacao"] ?></td>
                                 <td class="text-primary" scope="col"><?php echo $linha["observacao"] ?></td>
-                                <td scope="col">
-                                    <?php echo "<button name='feito' type='submit'><a href='deletagen.php?id=" . $linha['id'] . "'>Deletar</a></button>" ?>
-                                </td>
+                                <td class="text-primary" scope="col"><?php echo $linha["status"] ?> </td>
+                                
+                                <td class="text-primary" scope="col"><?php echo "<a class='btn btn-primary' href='deletagen.php?id=" . $linha['id'] . "'> V</a>" ?></td>
                             </tr>
                     </tbody>
                 <?php } while ($linha = $sql_query->fetch_assoc()); ?>
